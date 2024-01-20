@@ -10,13 +10,11 @@ public class JpaStarterMain{
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = factory.createEntityManager();
         
-        Employee employee = entityManager.find(Employee.class, 1);        
-        employee.setAge(30);
-        employee.setType(EmployeeType.FULL_TIME);
+        Employee employee = entityManager.find(Employee.class, 1);
 
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        entityManager.persist(employee);
+        entityManager.remove(employee);
         transaction.commit();
         entityManager.close();
         factory.close();
