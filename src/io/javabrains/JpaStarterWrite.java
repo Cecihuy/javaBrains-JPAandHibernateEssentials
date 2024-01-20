@@ -25,12 +25,14 @@ public class JpaStarterWrite{
         card.setIssuedDate(new Date());
         card.setActive(true);
         card.setFirmwareVersion("1.0.0");
+        card.setOwner(employee);
         employee.setCard(card);
 
         AccessCard card2 = new AccessCard();
         card2.setIssuedDate(new Date());
         card2.setActive(false);
         card2.setFirmwareVersion("1.2.0");
+        card2.setOwner(employee2);
         employee2.setCard(card2);
         
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");

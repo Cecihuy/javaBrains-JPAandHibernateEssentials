@@ -27,7 +27,7 @@ public class Employee {
     private EmployeeType type;
     private String ssn;
     private int age;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     private AccessCard card;
 
     @Override

@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class AccessCard {
@@ -18,7 +19,15 @@ public class AccessCard {
     private Date issuedDate;
     private boolean isActive;
     private String firmwareVersion;
+    @OneToOne(mappedBy = "card")
+    private Employee owner;
 
+    public Employee getOwner() {
+        return owner;
+    }
+    public void setOwner(Employee owner) {
+        this.owner = owner;
+    }
     @Override
     public String toString() {
         return "AccessCard [id=" + id + ", issuedDate=" + issuedDate + ", isActive=" + isActive + ", firmwareVersion="
