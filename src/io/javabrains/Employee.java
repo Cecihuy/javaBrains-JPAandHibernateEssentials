@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "employee_data")
@@ -27,6 +26,11 @@ public class Employee {
     private String ssn;
     private int age;
 
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", dob=" + dob + ", type=" + type + ", ssn=" + ssn + ", age="
+                + age + "]";
+    }
     public String getSsn() {
         return ssn;
     }
