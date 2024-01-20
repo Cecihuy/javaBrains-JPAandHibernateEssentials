@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -25,7 +26,15 @@ public class Employee {
     private EmployeeType type;
     private String ssn;
     private int age;
+    @OneToOne
+    private AccessCard card;
 
+    public AccessCard getCard() {
+        return card;
+    }
+    public void setCard(AccessCard card) {
+        this.card = card;
+    }
     @Override
     public String toString() {
         return "Employee [id=" + id + ", name=" + name + ", dob=" + dob + ", type=" + type + ", ssn=" + ssn + ", age="

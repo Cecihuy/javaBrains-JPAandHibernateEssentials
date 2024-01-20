@@ -25,11 +25,13 @@ public class JpaStarterMain{
         card.setIssuedDate(new Date());
         card.setActive(true);
         card.setFirmwareVersion("1.0.0");
+        employee.setCard(card);
 
         AccessCard card2 = new AccessCard();
         card2.setIssuedDate(new Date());
         card2.setActive(false);
         card2.setFirmwareVersion("1.2.0");
+        employee2.setCard(card2);
         
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = factory.createEntityManager();        
