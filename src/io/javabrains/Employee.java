@@ -1,8 +1,11 @@
 package io.javabrains;
+import java.util.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "employee_data", catalog = "jpa_hibernate_essentials")
@@ -11,7 +14,15 @@ public class Employee {
     private int id;
     @Column(name = "employee_name")
     private String name;
+    @Temporal(TemporalType.DATE)
+    private Date dob;
 
+    public Date getDob() {
+        return dob;
+    }
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
     public int getId() {
         return id;
     }
