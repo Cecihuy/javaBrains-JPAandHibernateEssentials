@@ -1,13 +1,15 @@
 package io.javabrains;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "EMPLOYEE_DATA")
+@Table(name = "employee_data", catalog = "jpa_hibernate_essentials")
 public class Employee {
     @Id
     private int id;
+    @Column(name = "employee_name")
     private String name;
 
     public int getId() {

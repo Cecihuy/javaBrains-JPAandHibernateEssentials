@@ -8,7 +8,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"></property>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_hibernate_essentials"></property>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/"></property>
             <property name="jakarta.persistence.jdbc.user" value="sa"></property>
             <property name="jakarta.persistence.jdbc.password" value="bar"></property>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"></property>
