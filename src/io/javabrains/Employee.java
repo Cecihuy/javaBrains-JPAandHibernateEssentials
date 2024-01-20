@@ -24,9 +24,21 @@ public class Employee {
     private Date dob;
     @Enumerated(EnumType.STRING)
     private EmployeeType type;
-    @Transient
-    private String debugString;
+    private String ssn;
+    private int age;
 
+    public String getSsn() {
+        return ssn;
+    }
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
     public EmployeeType getType() {
         return type;
     }

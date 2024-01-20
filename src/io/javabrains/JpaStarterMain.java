@@ -9,18 +9,17 @@ public class JpaStarterMain{
     public static void main(String[] args) {
         Employee employee = new Employee();
         employee.setName("Foo Bar");
+        employee.setSsn("123");
         employee.setDob(new Date());
-        employee.setType(EmployeeType.PERMANENT);
+        employee.setAge(20);
+        employee.setType(EmployeeType.CONTRACTOR);
 
         Employee employee1 = new Employee();
         employee1.setName("Bar Baz");
+        employee1.setSsn("1234");
         employee1.setDob(new Date());
+        employee1.setAge(30);
         employee1.setType(EmployeeType.FULL_TIME);
-
-        Employee employee2 = new Employee();
-        employee2.setName("Bax Foo");
-        employee2.setDob(new Date());
-        employee2.setType(EmployeeType.CONTRACTOR);
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -29,7 +28,6 @@ public class JpaStarterMain{
         entityTransaction.begin();
         entityManager.persist(employee);
         entityManager.persist(employee1);
-        entityManager.persist(employee2);
         entityTransaction.commit();
     }
 }
