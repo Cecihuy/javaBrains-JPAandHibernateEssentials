@@ -5,7 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
-public class JpaStarterMain{
+public class JpaStarterWrite{
     public static void main(String[] args) {
         Employee employee = new Employee();
         employee.setName("Foo Bar");
