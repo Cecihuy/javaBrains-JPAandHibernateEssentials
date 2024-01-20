@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "employee_data", catalog = "jpa_hibernate_essentials")
@@ -20,6 +21,8 @@ public class Employee {
     private Date dob;
     @Enumerated(EnumType.STRING)
     private EmployeeType type;
+    @Transient
+    private String debugString;
 
     public EmployeeType getType() {
         return type;
