@@ -1,5 +1,6 @@
 package io.javabrains;
 import java.util.Date;
+import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,6 +9,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -29,7 +31,15 @@ public class Employee {
     private int age;
     @OneToOne
     private AccessCard card;
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    private List<PayStub> payStub;
 
+    public List<PayStub> getPayStub() {
+        return payStub;
+    }
+    public void setPayStub(List<PayStub> payStub) {
+        this.payStub = payStub;
+    }
     @Override
     public String toString() {
         return "Employee [id=" + id + ", name=" + name + ", dob=" + dob + ", type=" + type + ", ssn=" + ssn + ", age="

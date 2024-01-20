@@ -1,5 +1,7 @@
 package io.javabrains;
 import java.util.Date;
+import java.util.List;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -47,6 +49,7 @@ public class JpaStarterWrite{
         payStub2.setPayPeriodEnd(new Date());
         payStub2.setEmployee(employee);
         payStub2.setSalary(2000);
+        employee.setPayStub(List.of(payStub,payStub2));
         
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = factory.createEntityManager();        

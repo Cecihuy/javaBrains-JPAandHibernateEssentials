@@ -17,6 +17,11 @@ public class PayStub {
     @ManyToOne
     private Employee employee;
 
+    @Override
+    public String toString() {
+        return "PayStub [id=" + id + ", payPeriodStart=" + payPeriodStart + ", payPeriodEnd=" + payPeriodEnd
+                + ", salary=" + salary + ", employee=" + employee + "]";
+    }
     public Employee getEmployee() {
         return employee;
     }
