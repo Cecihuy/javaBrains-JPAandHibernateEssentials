@@ -35,7 +35,7 @@ public class Employee {
     private AccessCard card;
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
     private List<PayStub> payStub = new ArrayList<PayStub>();
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<EmailGroup> emailGroups = new ArrayList<EmailGroup>();
 
     public List<EmailGroup> getEmailGroups() {
