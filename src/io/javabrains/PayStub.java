@@ -22,11 +22,15 @@ public class PayStub {
     @ManyToOne
     @JoinColumn(name = "paystub_for")
     private Employee employee;
-
+    
     @Override
     public String toString() {
-        return "PayStub [id=" + id + ", payPeriodStart=" + payPeriodStart + ", payPeriodEnd=" + payPeriodEnd
-                + ", salary=" + salary + ", employee=" + employee + "]";
+        return "PayStub [id=" + id 
+            + ", payPeriodStart=" + payPeriodStart 
+            + ", payPeriodEnd=" + payPeriodEnd
+            + ", salary=" + salary 
+            + ", employee=" + employee 
+            + "]";
     }
     public Employee getEmployee() {
         return employee;

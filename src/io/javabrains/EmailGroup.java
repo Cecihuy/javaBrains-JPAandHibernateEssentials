@@ -2,7 +2,6 @@ package io.javabrains;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,6 +16,10 @@ public class EmailGroup {
     @ManyToMany(mappedBy = "emailGroups")
     private List<Employee> members = new ArrayList<Employee>();
 
+    @Override
+    public String toString() {
+        return "EmailGroup [id=" + id + ", name=" + name + ", members=" + members + "]";
+    }
     public List<Employee> getMembers() {
         return members;
     }

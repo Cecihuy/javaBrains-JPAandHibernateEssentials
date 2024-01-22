@@ -2,7 +2,6 @@ package io.javabrains;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,6 +45,11 @@ public class Employee {
     )
     private List<EmailGroup> emailGroups = new ArrayList<EmailGroup>();
 
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", dob=" + dob + ", type=" + type + ", ssn=" + ssn + ", age="
+                + age + ", card=" + card + "]";
+    }
     public List<EmailGroup> getEmailGroups() {
         return emailGroups;
     }
@@ -57,12 +61,7 @@ public class Employee {
     }
     public void setPayStub(List<PayStub> payStub) {
         this.payStub = payStub;
-    }
-    // @Override
-    // public String toString() {
-    //     return "Employee [id=" + id + ", name=" + name + ", dob=" + dob + ", type=" + type + ", ssn=" + ssn + ", age="
-    //             + age + ", card=" + card + "]";
-    // }
+    }    
     public AccessCard getCard() {
         return card;
     }
@@ -105,6 +104,8 @@ public class Employee {
     public void setName(String name) {
         this.name = name;
     }
+
+    
     public void addEmailSubscription(EmailGroup group){
         this.emailGroups.add(group);
     }
