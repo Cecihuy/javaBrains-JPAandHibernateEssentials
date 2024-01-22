@@ -10,6 +10,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -34,8 +36,12 @@ public class Employee {
     @OneToOne
     private AccessCard card;
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
-    private List<PayStub> payStub = new ArrayList<PayStub>();
+    private List<PayStub> payStub = new ArrayList<PayStub>();    
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "EMAIL_GROUP-SUBSCRIPTIONS"        
+        ,joinColumns = @JoinColumn(name = "EMPLOYEE_ID")
+        ,inverseJoinColumns = @JoinColumn(name = "SUBSCRIPTION_EMAIL_ID")
+    )
     private List<EmailGroup> emailGroups = new ArrayList<EmailGroup>();
 
     public List<EmailGroup> getEmailGroups() {
