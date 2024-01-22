@@ -58,11 +58,11 @@ public class Employee {
     public void setPayStub(List<PayStub> payStub) {
         this.payStub = payStub;
     }
-    @Override
-    public String toString() {
-        return "Employee [id=" + id + ", name=" + name + ", dob=" + dob + ", type=" + type + ", ssn=" + ssn + ", age="
-                + age + ", card=" + card + "]";
-    }
+    // @Override
+    // public String toString() {
+    //     return "Employee [id=" + id + ", name=" + name + ", dob=" + dob + ", type=" + type + ", ssn=" + ssn + ", age="
+    //             + age + ", card=" + card + "]";
+    // }
     public AccessCard getCard() {
         return card;
     }
