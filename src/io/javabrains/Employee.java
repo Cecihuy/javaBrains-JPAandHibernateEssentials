@@ -1,4 +1,5 @@
 package io.javabrains;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import jakarta.persistence.Column;
@@ -9,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -32,8 +34,16 @@ public class Employee {
     @OneToOne
     private AccessCard card;
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
-    private List<PayStub> payStub;
+    private List<PayStub> payStub = new ArrayList<PayStub>();
+    @ManyToMany
+    private List<EmailGroup> emailGroups = new ArrayList<EmailGroup>();
 
+    public List<EmailGroup> getEmailGroups() {
+        return emailGroups;
+    }
+    public void setEmailGroups(List<EmailGroup> emailGroups) {
+        this.emailGroups = emailGroups;
+    }
     public List<PayStub> getPayStub() {
         return payStub;
     }
@@ -86,5 +96,8 @@ public class Employee {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    public void addEmailSubscription(EmailGroup group){
+        this.emailGroups.add(group);
     }
 }

@@ -1,7 +1,6 @@
 package io.javabrains;
 import java.util.Date;
 import java.util.List;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -43,13 +42,24 @@ public class JpaStarterWrite{
         payStub.setEmployee(employee);
         payStub.setSalary(1000);
 
-
         PayStub payStub2 = new PayStub();
         payStub2.setPayPeriodStart(new Date());
         payStub2.setPayPeriodEnd(new Date());
         payStub2.setEmployee(employee);
         payStub2.setSalary(2000);
         employee.setPayStub(List.of(payStub,payStub2));
+
+        EmailGroup emailGroup = new EmailGroup();
+        emailGroup.setName("Company watercooler discussions"); 
+        emailGroup.addMember(employee);
+        emailGroup.addMember(employee2);
+        employee.addEmailSubscription(emailGroup);
+        employee2.addEmailSubscription(emailGroup);
+
+        EmailGroup emailGroup2 = new EmailGroup();
+        emailGroup2.setName("Engineering");
+        employee.addEmailSubscription(emailGroup2);
+        emailGroup2.addMember(employee);
         
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = factory.createEntityManager();        
@@ -62,6 +72,8 @@ public class JpaStarterWrite{
         entityManager.persist(card2);
         entityManager.persist(payStub);
         entityManager.persist(payStub2);
+        entityManager.persist(emailGroup);
+        entityManager.persist(emailGroup2);
         transaction.commit();
         entityManager.close();
         factory.close();
