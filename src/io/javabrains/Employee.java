@@ -2,6 +2,8 @@ package io.javabrains;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -35,7 +37,7 @@ public class Employee {
     private int age;
     @OneToOne
     private AccessCard card;
-    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<PayStub> payStub = new ArrayList<PayStub>();    
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "EMAIL_GROUP-SUBSCRIPTIONS"        
