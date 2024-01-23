@@ -10,13 +10,11 @@ public class JpaJpqlExample {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = factory.createEntityManager();
 
-        TypedQuery<Employee> typedQuery = entityManager.createQuery(
-            /* uncomment one of these lines to try*/
-            // "select e from Employee e where e.card.isActive = true"
-            "select e from Employee e left join AccessCard a on e.id = a.id where card.isActive = true"
-            , Employee.class
+        TypedQuery<String> typedQuery = entityManager.createQuery(       
+            "select e.name from Employee e"
+            , String.class
         );
-        List<Employee> resultList = typedQuery.getResultList();
+        List<String> resultList = typedQuery.getResultList();
         resultList.forEach(System.out::println);        
 
         entityManager.close();
