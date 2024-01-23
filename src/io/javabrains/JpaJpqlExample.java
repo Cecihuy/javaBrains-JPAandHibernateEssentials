@@ -10,15 +10,10 @@ public class JpaJpqlExample {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = factory.createEntityManager();
 
-        String age = "25";
-        TypedQuery<Employee> typedQuery = entityManager.createQuery(       
-            "select e from Employee e where e.age > :minAge "
-            , Employee.class
-        );
-        int minAgeParse = Integer.parseInt(age);
-        typedQuery.setParameter("minAge", minAgeParse);
+        TypedQuery<Employee> namedQuery = entityManager.createNamedQuery("emp_name_asc", Employee.class);
+        namedQuery.setParameter("age", 25);
 
-        List<Employee> resultList = typedQuery.getResultList();
+        List<Employee> resultList = namedQuery.getResultList();
         resultList.forEach(System.out::println);
 
         entityManager.close();

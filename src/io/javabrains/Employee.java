@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -22,6 +23,8 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "employee_data")
+@NamedQuery(name = "emp_name_asc", 
+    query = "select e from Employee e where e.age > :age order by e.name")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
