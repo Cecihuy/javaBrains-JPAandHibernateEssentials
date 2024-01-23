@@ -10,12 +10,12 @@ public class JpaJpqlExample {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = factory.createEntityManager();
 
-        TypedQuery<Integer> typedQuery = entityManager.createQuery(       
-            "select e.age from Employee e"
-            , Integer.class
+        TypedQuery<Object[]> typedQuery = entityManager.createQuery(       
+            "select e.name, e.age, e.dob from Employee e"
+            , Object[].class
         );
-        List<Integer> resultList = typedQuery.getResultList();
-        resultList.forEach(System.out::println);        
+        List<Object[]> resultList = typedQuery.getResultList();
+        resultList.forEach(e -> System.out.println(e[0] + " " + e[1] + " " + e[2]));        
 
         entityManager.close();
         factory.close();
