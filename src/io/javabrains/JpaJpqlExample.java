@@ -12,10 +12,8 @@ public class JpaJpqlExample {
 
         TypedQuery<Employee> typedQuery = entityManager.createQuery(
             /* uncomment one of these lines to try*/
-            // "select e from Employee e"
-            // "select e from Employee e where e.age > 25"
-            // "select e from Employee e where e.age between 22 and 32"
-            "select e from Employee e where e.name like '%Bar%'"
+            // "select e from Employee e where e.card.isActive = true"
+            "select e from Employee e left join AccessCard a on e.id = a.id where card.isActive = true"
             , Employee.class
         );
         List<Employee> resultList = typedQuery.getResultList();
