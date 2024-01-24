@@ -1,24 +1,24 @@
 package io.javabrains.springbootjpaexample;
-import java.util.Date;
+import io.javabrains.springbootjpaexample.models.Employee;
+import io.javabrains.springbootjpaexample.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import io.javabrains.springbootjpaexample.models.Employee;
 import jakarta.annotation.PostConstruct;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.PersistenceContext;
+import java.util.Optional;
 
 @SpringBootApplication
 public class SpringbootjpaexampleApplication {
-	@PersistenceContext
-	private EntityManager entityManager;
+	@Autowired
+	EmployeeRepository employeeRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootjpaexampleApplication.class, args);
 	}
 	@PostConstruct
 	public void start(){
-		Employee employee = entityManager.find(Employee.class, 1);
-		System.out.println(employee);
+		Optional<Employee> employee = employeeRepository.findById(1);
+		if(employee.isPresent()){
+			System.out.println(employee.get());
+		}
 	}
 }
