@@ -19,6 +19,10 @@ public class Employee{
     @Column(unique = true, length = 10, nullable = false,  updatable = false)
     private String ssn;
 
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", dob=" + dob + ", ssn=" + ssn + "]";
+    }
     public int getId() {
         return id;
     }
