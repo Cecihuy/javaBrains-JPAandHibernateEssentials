@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
+import jakarta.transaction.Transactional.TxType;
+
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -26,7 +28,13 @@ public class SpringbootjpaexampleApplication {
 			updateEmployee(employee.get());
 		}
 	}
-	@Transactional(rollbackOn = SQLException.class)
+	//only illustration, not execution
+	@Transactional
+	private void updateEmployeeAndAccessCard(Employee e){
+		updateEmployee(e);
+		accessCardRepository.save(e);
+	}
+	@Transactional(value = TxType.MANDATORY)
 	private void updateEmployee(Employee employee) {
 		employee.setName("Updated name");
 		employeeRepository.save(employee);
